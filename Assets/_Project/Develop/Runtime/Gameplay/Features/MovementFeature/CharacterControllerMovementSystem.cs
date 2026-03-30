@@ -10,25 +10,18 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.MovementFeature
 	{
 		private ReactiveVariable<Vector3> _moveDirection;
 		private ReactiveVariable<float>   _moveSpeed;
-		private Transform                 _transform;
 		private CharacterController       _controller;
 
 		public void OnInit(Entity entity)
 		{
 			_moveDirection = entity.MoveDirection;
 			_moveSpeed     = entity.MoveSpeed;
-			_transform = entity.Transform;
 			_controller = entity.CharacterController;
 		}
 
 		public void OnUpdate(float deltaTime)
 		{
 			_controller.Move(_moveDirection.Value.normalized * (_moveSpeed.Value * deltaTime));
-
-			if (_moveDirection.Value != Vector3.zero)
-			{
-				_transform.rotation = Quaternion.LookRotation(_moveDirection.Value);
-			}
 		}
 	}
 }
