@@ -24,11 +24,6 @@ namespace Assets._Project.Develop.Runtime.Gameplay.Features.MovementFeature
             Vector3 velocity = _moveDirection.Value.normalized * _moveSpeed.Value;
 
             _rigidbody.velocity = velocity;
-
-            if (_moveDirection.Value != Vector3.zero)
-            {
-                _rigidbody.MoveRotation(Quaternion.LookRotation(_moveDirection.Value));
-            }
         }
     }
 }
